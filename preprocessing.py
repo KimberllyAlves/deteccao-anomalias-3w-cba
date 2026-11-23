@@ -21,6 +21,23 @@ def normalizar_rotulos(serie: pd.Series) -> pd.Series:
     return serie.map(mapear).astype(int)
 
 
+def limpar_sentinelas(df, variaveis, limite):
+    """
+    Trata como ausente (NaN) toda leitura com |x| > limite (sensor travado).
+    Devolve (df, n_celulas_afetadas) sem modificar o dataframe de entrada.
+    """
+    df = df.copy()
+    n = 0
+    for col in variaveis:
+        if col not in df.columns:
+            continue
+        mascara = df[col].abs() > limite
+        if mascara.any():
+            n += int(mascara.sum())
+            df.loc[mascara, col] = np.nan
+    return df, n
+
+
 def filtrar_variaveis(janela_bruta: np.ndarray, janela_norm: np.ndarray) -> np.ndarray:
     """
     Critérios de Vargas (2019) avaliados nos dados brutos, aplicados na janela

@@ -1,6 +1,13 @@
-numpy
-pandas
-pyarrow
-scikit-learn
-scipy
-torch
+# Versões usadas nos resultados do TCC (Python 3.12.13).
+numpy==2.0.2
+pandas==3.0.5
+pyarrow==25.0.1
+scikit-learn==1.9.0
+scipy==1.18.1
+pyod==3.6.5
+numba==0.60.0
+llvmlite==0.43.0
+matplotlib==3.11.1
+# torch só é necessário para o VAE do trabalho original (vae.py e
+# vae_benchmark.py), que não é usado no TCC.
+# torch
