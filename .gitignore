@@ -6,3 +6,11 @@ venv/
 .venv/
 *.csv
 *.parquet
+# Resultados que sustentam as tabelas do TCC entram no repositório;
+# o cache de atributos e os logs são gerados ao rodar o código.
+!resultados/*.csv
+resultados/cache_features/
+resultados/logs/
+
+# Scripts e saídas do documento do TCC: ficam só na cópia local
+tcc/
